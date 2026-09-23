@@ -1,0 +1,31 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build
+client/dist/
+build/
+
+# Environment
+.env
+.env.local
+.env.development
+.env.production
+
+# IDE and OS
+.vscode/
+.idea/
+.DS_Store
+
+# Antigravity/Agent artifacts
+.gemini/
+brain/
+scratch/
+
+# Specific project documents to exclude
+frontend.md
+folderstructure.md
+interview_guide.md
+manual_testing_guide.md
+masterprompt.md
