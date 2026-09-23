@@ -29,3 +29,6 @@ folderstructure.md
 interview_guide.md
 manual_testing_guide.md
 masterprompt.md
+
+# Scratch Scripts
+server/test_ai*.js

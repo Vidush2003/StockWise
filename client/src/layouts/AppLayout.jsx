@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import { useAuth } from '../context/AuthContext';
 import { ToastProvider } from '../context/ToastContext';
 import LoadingState from '../components/LoadingState';
+import AIChatWidget from '../components/ai/AIChatWidget';
 
 const pageTitleMap = {
   '/dashboard': 'Dashboard Overview',
@@ -46,6 +47,7 @@ const AppLayout = () => {
             </div>
           </main>
         </div>
+        <AIChatWidget />
       </div>
     </ToastProvider>
   );

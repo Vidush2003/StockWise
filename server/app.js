@@ -30,6 +30,7 @@ app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/products', require('./routes/productRoutes'));
 app.use('/api/transactions', require('./routes/transactionRoutes'));
 app.use('/api/dashboard', require('./routes/dashboardRoutes'));
+app.use('/api/ai', require('./routes/aiRoutes'));
 
 // Error handling
 app.use(notFound);

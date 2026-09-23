@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import * as dashboardService from '../services/dashboardService';
 import StatCard from '../components/StatCard';
 import Skeleton from '../components/Skeleton';
+import PredictiveInsights from '../components/ai/PredictiveInsights';
 import StatusBadge from '../components/StatusBadge';
 import { formatCurrency } from '../utils/formatters';
 import {
@@ -169,6 +170,11 @@ const DashboardPage = () => {
           icon={XCircle}
           color="rose"
         />
+      </div>
+
+      {/* Predictive Insights */}
+      <div className="mb-6">
+        <PredictiveInsights />
       </div>
 
       {/* Analytics Charts Row */}
