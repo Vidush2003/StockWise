@@ -83,23 +83,24 @@ const ProductFormModal = ({ isOpen, onClose, onSubmit, initialData = null, isEdi
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto">
-      <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-2xl my-8">
+      <div className="relative w-full max-w-2xl glass-panel-elevated border border-white/10 rounded-3xl p-8 shadow-2xl my-8 overflow-hidden backdrop-blur-3xl">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-500/5 rounded-full blur-[80px] pointer-events-none"></div>
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition-colors"
+          className="absolute top-6 right-6 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-colors z-10"
         >
           <X className="w-5 h-5" />
         </button>
 
-        <div className="flex items-center gap-3 mb-6 pb-4 border-b border-slate-800">
-          <div className="p-2.5 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20">
+        <div className="flex items-center gap-4 mb-8 pb-6 border-b border-white/10 relative z-10">
+          <div className="p-3 rounded-2xl bg-brand-500/10 text-brand-400 border border-brand-500/20 shadow-[0_0_15px_rgba(37,99,235,0.2)]">
             {isEditing ? <Edit3 className="w-6 h-6" /> : <PackagePlus className="w-6 h-6" />}
           </div>
           <div>
-            <h2 className="text-xl font-bold text-white">
+            <h2 className="text-2xl font-black text-white tracking-tight">
               {isEditing ? 'Edit Product Specifications' : 'Add New Product'}
             </h2>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs font-medium text-slate-400 mt-1">
               {isEditing ? 'Update stock parameters & details' : 'Enter product catalog details & initial stock'}
             </p>
           </div>
@@ -123,7 +124,7 @@ const ProductFormModal = ({ isOpen, onClose, onSubmit, initialData = null, isEdi
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 placeholder="e.g. Wireless Mouse"
-                className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm text-white focus:border-blue-500 focus:outline-none"
+                className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl text-sm text-white focus:border-brand-500 focus:outline-none shadow-inner"
               />
               {errors.name && <p className="mt-1 text-xs text-rose-400">{errors.name}</p>}
             </div>
@@ -138,7 +139,7 @@ const ProductFormModal = ({ isOpen, onClose, onSubmit, initialData = null, isEdi
                 value={formData.sku}
                 onChange={(e) => setFormData({ ...formData, sku: e.target.value.toUpperCase() })}
                 placeholder="e.g. MOU-LOG-MX3"
-                className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm text-white focus:border-blue-500 focus:outline-none uppercase font-mono"
+                className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl text-sm text-white focus:border-brand-500 focus:outline-none shadow-inner uppercase font-mono"
               />
               {errors.sku && <p className="mt-1 text-xs text-rose-400">{errors.sku}</p>}
             </div>
@@ -153,7 +154,7 @@ const ProductFormModal = ({ isOpen, onClose, onSubmit, initialData = null, isEdi
                 value={formData.category}
                 onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                 placeholder="e.g. Accessories, Electronics"
-                className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm text-white focus:border-blue-500 focus:outline-none"
+                className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl text-sm text-white focus:border-brand-500 focus:outline-none shadow-inner"
               />
               {errors.category && <p className="mt-1 text-xs text-rose-400">{errors.category}</p>}
             </div>
@@ -170,7 +171,7 @@ const ProductFormModal = ({ isOpen, onClose, onSubmit, initialData = null, isEdi
                 value={formData.price}
                 onChange={(e) => setFormData({ ...formData, price: e.target.value })}
                 placeholder="e.g. 1499"
-                className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm text-white focus:border-blue-500 focus:outline-none"
+                className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl text-sm text-white focus:border-brand-500 focus:outline-none shadow-inner"
               />
               {errors.price && <p className="mt-1 text-xs text-rose-400">{errors.price}</p>}
             </div>
@@ -187,7 +188,7 @@ const ProductFormModal = ({ isOpen, onClose, onSubmit, initialData = null, isEdi
                   value={formData.quantity}
                   onChange={(e) => setFormData({ ...formData, quantity: e.target.value })}
                   placeholder="e.g. 20"
-                  className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm text-white focus:border-blue-500 focus:outline-none"
+                  className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl text-sm text-white focus:border-brand-500 focus:outline-none shadow-inner"
                 />
                 {errors.quantity && <p className="mt-1 text-xs text-rose-400">{errors.quantity}</p>}
               </div>
@@ -204,7 +205,7 @@ const ProductFormModal = ({ isOpen, onClose, onSubmit, initialData = null, isEdi
                 value={formData.minimumStock}
                 onChange={(e) => setFormData({ ...formData, minimumStock: e.target.value })}
                 placeholder="e.g. 5"
-                className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm text-white focus:border-blue-500 focus:outline-none"
+                className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl text-sm text-white focus:border-brand-500 focus:outline-none shadow-inner"
               />
               {errors.minimumStock && <p className="mt-1 text-xs text-rose-400">{errors.minimumStock}</p>}
             </div>
@@ -219,7 +220,7 @@ const ProductFormModal = ({ isOpen, onClose, onSubmit, initialData = null, isEdi
                 value={formData.unit}
                 onChange={(e) => setFormData({ ...formData, unit: e.target.value })}
                 placeholder="e.g. pcs, boxes, reams"
-                className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm text-white focus:border-blue-500 focus:outline-none"
+                className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl text-sm text-white focus:border-brand-500 focus:outline-none shadow-inner"
               />
             </div>
 
@@ -233,7 +234,7 @@ const ProductFormModal = ({ isOpen, onClose, onSubmit, initialData = null, isEdi
                 value={formData.supplierName}
                 onChange={(e) => setFormData({ ...formData, supplierName: e.target.value })}
                 placeholder="e.g. ABC Tech Distributors"
-                className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm text-white focus:border-blue-500 focus:outline-none"
+                className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl text-sm text-white focus:border-brand-500 focus:outline-none shadow-inner"
               />
             </div>
           </div>
@@ -248,24 +249,24 @@ const ProductFormModal = ({ isOpen, onClose, onSubmit, initialData = null, isEdi
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
               placeholder="Product details or specifications..."
-              className="w-full px-3.5 py-2.5 bg-slate-950 border border-slate-800 rounded-xl text-sm text-white focus:border-blue-500 focus:outline-none resize-none"
+              className="w-full px-4 py-3 bg-slate-900/50 border border-white/10 rounded-xl text-sm text-white focus:border-brand-500 focus:outline-none shadow-inner resize-none"
             />
           </div>
 
           {/* Modal Action Buttons */}
-          <div className="pt-4 flex items-center justify-end gap-3 border-t border-slate-800">
+          <div className="pt-6 flex items-center justify-end gap-4 border-t border-white/10 mt-8 relative z-10">
             <button
               type="button"
               onClick={onClose}
               disabled={loading}
-              className="px-4 py-2.5 text-sm font-medium text-slate-300 bg-slate-800 hover:bg-slate-700 rounded-xl transition-colors"
+              className="px-5 py-3 text-sm font-bold text-slate-300 glass-panel hover:bg-white/10 rounded-xl transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={loading}
-              className="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-white bg-blue-600 hover:bg-blue-500 rounded-xl transition-colors shadow-lg shadow-blue-600/20 disabled:opacity-50"
+              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-bold text-white bg-brand-600 hover:bg-brand-500 rounded-xl transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)] disabled:opacity-50"
             >
               <Save className="w-4 h-4" />
               {loading ? 'Saving...' : isEditing ? 'Save Changes' : 'Create Product'}

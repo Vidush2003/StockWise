@@ -4,8 +4,9 @@ import { Shield, Zap, Search } from 'lucide-react';
 
 const BentoGrid = () => {
   return (
-    <section id="features" className="py-24 relative z-10 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section id="features" className="py-32 relative z-10 px-6">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-4xl h-[600px] bg-brand-500/5 rounded-full blur-[150px] pointer-events-none z-0"></div>
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
             EVERYTHING YOU NEED.<br />
@@ -26,8 +27,8 @@ const BentoGrid = () => {
             </div>
 
             {/* Visual Preview */}
-            <div className="absolute right-0 bottom-0 w-[85%] md:w-[60%] bg-slate-900 rounded-tl-xl border-l border-t border-slate-700/50 p-4 shadow-2xl transition-transform duration-500 group-hover:-translate-y-2 group-hover:-translate-x-2">
-              <div className="flex items-center justify-between px-2 pb-2 mb-2 border-b border-slate-800 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+            <div className="absolute right-0 bottom-0 w-[85%] md:w-[60%] bg-slate-900/80 backdrop-blur-xl rounded-tl-xl border-l border-t border-white/10 p-4 shadow-[0_-10px_30px_rgba(0,0,0,0.3)] transition-transform duration-500 group-hover:-translate-y-2 group-hover:-translate-x-2">
+              <div className="flex items-center justify-between px-2 pb-2 mb-2 border-b border-white/10 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
                 <span>Product</span>
                 <span>Status</span>
               </div>
@@ -59,7 +60,7 @@ const BentoGrid = () => {
               <p className="text-slate-400 text-sm">Find any product instantly.</p>
             </div>
 
-            <div className="w-full bg-slate-900/80 rounded-lg p-3 border border-slate-700/50 flex items-center gap-2 group-hover:border-brand-500/50 group-hover:shadow-[0_0_15px_rgba(37,99,235,0.2)] transition-all">
+            <div className="w-full bg-slate-900/50 backdrop-blur-sm rounded-lg p-3 border border-white/10 flex items-center gap-2 group-hover:border-brand-500/50 group-hover:shadow-[0_0_15px_rgba(37,99,235,0.2)] transition-all">
               <Search className="w-4 h-4 text-brand-400 group-hover:text-brand-300" />
               <span className="text-sm text-slate-300">Type-C Cable<span className="animate-pulse">|</span></span>
             </div>
@@ -77,7 +78,7 @@ const BentoGrid = () => {
             </div>
 
             {/* Visual Preview */}
-            <div className="absolute right-8 top-1/2 -translate-y-1/2 w-64 h-fit bg-slate-900/90 rounded-xl border border-slate-700/50 p-6 hidden md:block shadow-2xl group-hover:scale-105 transition-transform duration-500">
+            <div className="absolute right-8 top-1/2 -translate-y-1/2 w-64 h-fit bg-slate-900/80 backdrop-blur-xl rounded-xl border border-white/10 p-6 hidden md:block shadow-[0_10px_30px_rgba(0,0,0,0.3)] group-hover:scale-105 transition-transform duration-500">
               <div className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-4">Recent Activity</div>
               <MockAuditLog time="10:42 AM" action="IN" item="+50 USB-C Adapters" isLatest={true} />
               <MockAuditLog time="09:15 AM" action="OUT" item="-2 MacBook Pro 16" />

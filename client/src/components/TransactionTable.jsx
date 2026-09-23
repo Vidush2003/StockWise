@@ -27,10 +27,10 @@ const TransactionTable = ({ transactions = [] }) => {
   };
 
   return (
-    <div className="w-full overflow-x-auto rounded-xl border border-slate-800 bg-slate-900">
+    <div className="w-full overflow-x-auto rounded-3xl border border-white/5 bg-slate-900/40 backdrop-blur-xl shadow-2xl">
       <table className="w-full text-left border-collapse text-sm">
         <thead>
-          <tr className="border-b border-slate-800 bg-slate-950/60 text-slate-400 font-semibold uppercase text-[11px] tracking-wider">
+          <tr className="border-b border-white/10 bg-slate-950/40 text-slate-400 font-bold uppercase text-[10px] tracking-widest">
             <th className="py-4 px-5">Date & Time</th>
             <th className="py-4 px-4">Product / SKU</th>
             <th className="py-4 px-4 text-center">Type</th>
@@ -40,13 +40,13 @@ const TransactionTable = ({ transactions = [] }) => {
             <th className="py-4 px-5 text-right">Performed By</th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-slate-800/60 text-slate-300">
+        <tbody className="divide-y divide-white/5 text-slate-300">
           {transactions.map((tx) => {
             const { label, badgeClass, icon: Icon } = getTypeStyle(tx.type);
             const isOut = tx.type === 'STOCK_OUT';
 
             return (
-              <tr key={tx._id} className="hover:bg-slate-800/40 transition-colors">
+              <tr key={tx._id} className="hover:bg-white/5 transition-colors">
                 {/* Date */}
                 <td className="py-4 px-5 text-xs text-slate-400 whitespace-nowrap">
                   {formatDate(tx.createdAt)}

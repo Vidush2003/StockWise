@@ -3,7 +3,7 @@ import { Package } from 'lucide-react';
 
 const LandingFooter = () => {
   return (
-    <footer className="border-t border-slate-800 bg-surface-a relative z-10">
+    <footer className="relative z-10">
       <div className="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-2">
           <div className="bg-brand-500/20 p-1.5 rounded-lg">

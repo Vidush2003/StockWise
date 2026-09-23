@@ -25,19 +25,19 @@ const Sidebar = ({ isOpen, onClose }) => {
   ];
 
   const sidebarContent = (
-    <div className="flex flex-col justify-between h-full bg-slate-900/95 border-r border-slate-800/80 backdrop-blur-xl">
+    <div className="flex flex-col justify-between h-full bg-slate-900/40 border-r border-white/5 backdrop-blur-3xl">
       <div>
         {/* Brand Header */}
         <div className="p-5 border-b border-slate-800/80 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="p-2.5 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-500 text-white shadow-lg shadow-blue-500/20">
+            <div className="p-2.5 rounded-xl bg-brand-500/10 border border-brand-500/20 text-brand-400 shadow-[0_0_15px_rgba(37,99,235,0.2)]">
               <Box className="w-5 h-5" />
             </div>
             <div>
-              <h1 className="text-base font-bold tracking-tight text-white flex items-center gap-1.5">
+              <h1 className="text-lg font-black tracking-tight text-white flex items-center gap-1.5 leading-none">
                 StockWise
               </h1>
-              <p className="text-[11px] font-medium text-slate-400">B2B Inventory SaaS</p>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-brand-500/70 mt-1">B2B Inventory SaaS</p>
             </div>
           </div>
           {/* Mobile Close Button */}
@@ -67,9 +67,9 @@ const Sidebar = ({ isOpen, onClose }) => {
                       to={item.path}
                       onClick={() => onClose && onClose()}
                       className={({ isActive }) =>
-                        `flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all duration-200 ${isActive
-                          ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/20'
-                          : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+                        `flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition-all duration-300 ${isActive
+                          ? 'bg-brand-500/10 text-brand-300 border border-brand-500/20 shadow-[0_0_15px_rgba(37,99,235,0.15)]'
+                          : 'text-slate-400 hover:text-white hover:bg-white/5 border border-transparent'
                         }`
                       }
                     >
@@ -85,10 +85,10 @@ const Sidebar = ({ isOpen, onClose }) => {
       </div>
 
       {/* User Profile Footer */}
-      <div className="p-4 border-t border-slate-800/80 bg-slate-950/40">
-        <div className="flex items-center justify-between p-2.5 rounded-xl bg-slate-800/40 border border-slate-800/80">
+      <div className="p-4 border-t border-white/5 bg-slate-950/20">
+        <div className="flex items-center justify-between p-3 rounded-xl bg-slate-900/50 border border-white/5 hover:border-white/10 transition-colors">
           <div className="flex items-center gap-2.5 overflow-hidden">
-            <div className="w-8 h-8 rounded-lg bg-blue-600/20 text-blue-400 border border-blue-500/30 flex items-center justify-center font-bold text-xs uppercase shrink-0">
+            <div className="w-8 h-8 rounded-lg bg-brand-500/20 text-brand-400 border border-brand-500/30 flex items-center justify-center font-black text-xs uppercase shrink-0 shadow-[0_0_10px_rgba(37,99,235,0.2)]">
               {user?.name?.[0] || 'U'}
             </div>
             <div className="truncate">

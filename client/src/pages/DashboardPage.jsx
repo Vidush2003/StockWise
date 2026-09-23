@@ -94,22 +94,23 @@ const DashboardPage = () => {
   return (
     <div className="space-y-6">
       {/* Personalized Welcome Banner & Quick Action Toolbar */}
-      <div className="p-6 rounded-xl border border-slate-800 bg-slate-900 flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-xl font-bold text-white flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-blue-400" />
+      <div className="p-8 rounded-3xl glass-panel-elevated flex flex-col md:flex-row md:items-center justify-between gap-6 relative overflow-hidden group">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-500/10 rounded-full blur-[80px] group-hover:bg-brand-500/20 transition-colors pointer-events-none"></div>
+        <div className="relative z-10">
+          <h1 className="text-3xl md:text-4xl font-black text-white flex items-center gap-3 tracking-tight">
+            <Sparkles className="w-8 h-8 text-brand-400" />
             {getGreeting()}, {user?.name || 'User'}!
           </h1>
-          <p className="text-xs text-slate-400 mt-1">
+          <p className="text-sm md:text-base text-slate-400 mt-2 leading-relaxed max-w-xl">
             Here's what is happening with your stock, inventory valuations, and recent activity.
           </p>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2">
+        <div className="flex flex-wrap items-center gap-3 relative z-10">
           {isAdmin && (
             <button
               onClick={() => navigate('/products?action=add')}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 rounded-xl transition-all shadow-lg shadow-blue-600/20"
+              className="inline-flex items-center gap-1.5 px-5 py-2.5 text-sm font-bold text-white bg-brand-600 hover:bg-brand-500 rounded-xl transition-all shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.5)]"
             >
               <Plus className="w-4 h-4" /> Add Product
             </button>
@@ -117,21 +118,21 @@ const DashboardPage = () => {
 
           <button
             onClick={() => navigate('/products')}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-emerald-400 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 rounded-xl transition-colors"
+            className="inline-flex items-center gap-1.5 px-4 py-2.5 text-sm font-bold text-emerald-400 glass-panel hover:bg-white/5 border-emerald-500/10 rounded-xl transition-colors shadow-lg shadow-black/10"
           >
             <ArrowUpRight className="w-4 h-4" /> Stock In
           </button>
 
           <button
             onClick={() => navigate('/products')}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-amber-400 bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/20 rounded-xl transition-colors"
+            className="inline-flex items-center gap-1.5 px-4 py-2.5 text-sm font-bold text-amber-400 glass-panel hover:bg-white/5 border-amber-500/10 rounded-xl transition-colors shadow-lg shadow-black/10"
           >
             <ArrowDownRight className="w-4 h-4" /> Stock Out
           </button>
 
           <button
             onClick={() => navigate('/transactions')}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-slate-300 bg-slate-800 hover:bg-slate-700 border border-slate-700/60 rounded-xl transition-colors"
+            className="inline-flex items-center gap-1.5 px-4 py-2.5 text-sm font-bold text-slate-300 glass-panel hover:bg-white/5 rounded-xl transition-colors shadow-lg shadow-black/10"
           >
             <History className="w-4 h-4" /> Transactions
           </button>
@@ -173,11 +174,11 @@ const DashboardPage = () => {
       {/* Analytics Charts Row */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Category Breakdown Chart */}
-        <div className="p-6 rounded-xl border border-slate-800 bg-slate-900">
-          <div className="flex items-center justify-between mb-4">
+        <div className="p-8 rounded-3xl glass-panel-elevated">
+          <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-2">
-              <PieIcon className="w-5 h-5 text-blue-400" />
-              <h3 className="text-base font-bold text-white">Stock Quantity by Category</h3>
+              <PieIcon className="w-5 h-5 text-brand-400" />
+              <h3 className="text-lg font-bold text-white tracking-tight">Stock Quantity by Category</h3>
             </div>
           </div>
           <div className="h-64">
@@ -203,11 +204,11 @@ const DashboardPage = () => {
         </div>
 
         {/* Stock Movement Line Chart */}
-        <div className="p-6 rounded-xl border border-slate-800 bg-slate-900">
-          <div className="flex items-center justify-between mb-4">
+        <div className="p-8 rounded-3xl glass-panel-elevated">
+          <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-2">
               <TrendingUp className="w-5 h-5 text-emerald-400" />
-              <h3 className="text-base font-bold text-white">Recent Stock Movement (7 Days)</h3>
+              <h3 className="text-lg font-bold text-white tracking-tight">Recent Stock Movement (7 Days)</h3>
             </div>
           </div>
           <div className="h-64">
@@ -235,17 +236,17 @@ const DashboardPage = () => {
       </div>
 
       {/* Low Stock Alerts Table */}
-      <div className="p-6 rounded-xl border border-slate-800 bg-slate-900">
-        <div className="flex items-center justify-between mb-4">
+      <div className="p-8 rounded-3xl glass-panel-elevated mb-12">
+        <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-2">
-            <AlertTriangle className="w-5 h-5 text-amber-400" />
-            <h3 className="text-base font-bold text-white">Low & Out of Stock Alerts</h3>
+            <AlertTriangle className="w-6 h-6 text-amber-400" />
+            <h3 className="text-xl font-bold text-white tracking-tight">Low & Out of Stock Alerts</h3>
           </div>
           <button
             onClick={() => navigate('/products?status=LOW_STOCK')}
-            className="text-xs text-blue-400 hover:underline font-semibold"
+            className="text-sm text-brand-400 hover:text-brand-300 font-bold transition-colors"
           >
-            View All in Catalog →
+            View All in Catalog &rarr;
           </button>
         </div>
 

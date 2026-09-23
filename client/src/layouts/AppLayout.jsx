@@ -35,12 +35,15 @@ const AppLayout = () => {
 
   return (
     <ToastProvider>
-      <div className="flex min-h-screen bg-slate-950 text-slate-100 selection:bg-blue-500 selection:text-white">
+      <div className="flex min-h-screen bg-slate-950 text-slate-100 selection:bg-brand-500 selection:text-white relative">
+        <div className="aurora-bg"></div>
         <Sidebar isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
-        <div className="flex-1 flex flex-col min-w-0">
+        <div className="flex-1 flex flex-col min-w-0 relative z-10">
           <Navbar title={title} onToggleMobileMenu={() => setMobileMenuOpen(true)} />
-          <main className="flex-1 p-4 sm:p-6 overflow-y-auto">
-            <Outlet />
+          <main className="flex-1 p-4 sm:p-8 overflow-y-auto">
+            <div className="max-w-7xl mx-auto">
+              <Outlet />
+            </div>
           </main>
         </div>
       </div>

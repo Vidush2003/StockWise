@@ -25,7 +25,7 @@ const steps = [
 
 const WorkflowSection = () => {
   return (
-    <section id="workflow" className="py-24 relative z-10 px-6 bg-slate-900/50">
+    <section id="workflow" className="py-32 relative z-10 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="mb-16">
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-4">
@@ -39,12 +39,12 @@ const WorkflowSection = () => {
             <div key={index} className="relative group">
               {/* Connector Line (Desktop) */}
               {index < steps.length - 1 && (
-                <div className="hidden md:block absolute top-8 left-[60%] w-full h-[2px] bg-slate-800">
-                  <div className="h-full bg-brand-500 w-0 group-hover:w-full transition-all duration-700 ease-in-out"></div>
+                <div className="hidden md:block absolute top-8 left-[60%] w-full h-[1px] bg-slate-800/50">
+                  <div className="h-full bg-gradient-to-r from-brand-500 to-indigo-400 w-0 group-hover:w-full transition-all duration-700 ease-in-out shadow-[0_0_10px_rgba(37,99,235,0.5)]"></div>
                 </div>
               )}
 
-              <div className="mb-6 w-16 h-16 rounded-2xl bg-slate-800 flex items-center justify-center border border-slate-700 text-xl font-black text-slate-500 group-hover:text-brand-400 group-hover:border-brand-500/50 transition-colors z-10 relative bg-surface-a">
+              <div className="mb-6 w-16 h-16 rounded-full glass-panel-elevated flex items-center justify-center border border-white/5 text-xl font-black text-slate-500 group-hover:text-brand-400 group-hover:border-brand-500/50 transition-all z-10 relative bg-slate-950 shadow-[0_0_20px_rgba(0,0,0,0.5)] group-hover:shadow-[0_0_30px_rgba(37,99,235,0.3)]">
                 {step.num}
               </div>
 

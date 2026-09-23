@@ -44,19 +44,20 @@ const TransactionsPage = () => {
   return (
     <div className="space-y-6">
       {/* Page Header */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
-        <div>
-          <h1 className="text-xl font-bold text-white flex items-center gap-2">
-            <History className="w-6 h-6 text-blue-400" /> Stock Audit & Transaction Logs
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-6 mb-8 bg-slate-900/40 p-6 md:p-8 rounded-3xl border border-white/5 backdrop-blur-xl shadow-2xl relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-brand-500/10 rounded-full blur-[80px] pointer-events-none"></div>
+        <div className="relative z-10">
+          <h1 className="text-2xl md:text-3xl font-black text-white flex items-center gap-3 tracking-tight">
+            <History className="w-8 h-8 text-brand-400" /> Stock Audit & Transaction Logs
           </h1>
-          <p className="text-xs text-slate-400 mt-0.5">
-            Immutable audit trail of all stock intake, issuance, and quantity adjustments
+          <p className="text-sm text-slate-400 mt-2 font-medium">
+            Immutable audit trail of all stock intake, issuance, and quantity adjustments.
           </p>
         </div>
       </div>
 
       {/* Filter Toolbar */}
-      <div className="flex flex-wrap items-center justify-between gap-4 p-4 rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur-xl">
+      <div className="flex flex-wrap items-center justify-between gap-4 p-5 rounded-2xl glass-panel-elevated">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-2 text-xs font-semibold text-slate-400 uppercase tracking-wider">
             <Filter className="w-4 h-4 text-blue-400" /> Filter Type:

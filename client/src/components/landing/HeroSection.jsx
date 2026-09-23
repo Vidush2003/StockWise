@@ -2,13 +2,11 @@ import { ArrowRight, Activity, TrendingUp, AlertCircle } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { MockChart, MockTableRow } from './UIFragments';
 
-const HeroSection = () => {
+const HeroSection = ({ onOpenAuth }) => {
   return (
-    <section className="relative min-h-screen pt-32 pb-20 flex flex-col items-center justify-center overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-50 z-0"></div>
-      <div className="ambient-glow top-0 left-1/2 -translate-x-1/2 z-0"></div>
-      <div className="ambient-glow bottom-0 right-[-10%] translate-y-1/2 z-0 bg-indigo-500/10"></div>
+    <section className="relative min-h-screen pt-32 pb-20 flex flex-col items-center justify-center overflow-visible">
+      {/* Background elements (Localized to Hero) */}
+      <div className="absolute top-[40%] left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-brand-600/15 rounded-full blur-[150px] pointer-events-none z-0"></div>
 
       {/* Main Content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 text-center">
@@ -29,14 +27,14 @@ const HeroSection = () => {
           Stop guessing. Start managing.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
-          <Link
-            to="/register"
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+          <button
+            onClick={() => onOpenAuth('register')}
             className="w-full sm:w-auto px-8 py-4 bg-brand-600 hover:bg-brand-500 text-white rounded-xl font-medium transition-all shadow-[0_0_20px_rgba(37,99,235,0.4)] hover:shadow-[0_0_30px_rgba(37,99,235,0.6)] flex items-center justify-center gap-2 group"
           >
             Start Managing Inventory
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Link>
+          </button>
           <a
             href="#features"
             className="w-full sm:w-auto px-8 py-4 glass-panel text-white rounded-xl font-medium hover:bg-white/5 transition-colors flex items-center justify-center"
@@ -46,97 +44,106 @@ const HeroSection = () => {
         </div>
 
         {/* Dashboard Preview Presentation */}
-        <div className="relative mx-auto max-w-5xl">
-          {/* Floating Data Fragments */}
-          <div className="hidden lg:block absolute -left-12 top-20 z-20 glass-panel-elevated p-4 rounded-xl animate-float-delayed">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-emerald-500/20 rounded-lg">
+        <div className="relative mx-auto max-w-[1050px] mt-12 mb-10 overflow-visible">
+          
+          {/* Ambient Background Glow (z-index: 0) */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-brand-500/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
+
+          {/* Main Composition Container */}
+          <div className="relative w-full z-10 overflow-visible">
+            
+            {/* Dashboard Frame (z-index: 10, overflow: hidden) */}
+            <div className="glass-panel-elevated rounded-xl border border-white/10 shadow-[0_40px_100px_rgba(0,0,0,0.6)] overflow-hidden relative bg-slate-900/95 backdrop-blur-xl z-10">
+              
+              {/* Premium Window Frame */}
+              <div className="h-12 border-b border-white/5 flex items-center justify-center px-6 bg-slate-950/80 relative z-20">
+                <div className="absolute left-6 flex gap-2 opacity-30">
+                  <div className="w-3 h-3 rounded-full bg-slate-600"></div>
+                  <div className="w-3 h-3 rounded-full bg-slate-600"></div>
+                  <div className="w-3 h-3 rounded-full bg-slate-600"></div>
+                </div>
+                <span className="text-[11px] font-mono text-slate-500 tracking-[0.2em] uppercase">StockWise Console</span>
+              </div>
+
+              {/* Dashboard Content (z-index: 11) */}
+              <div className="p-8 grid grid-cols-1 md:grid-cols-4 gap-8 bg-transparent relative z-11">
+                {/* Sidebar Mock */}
+                <div className="hidden md:flex flex-col gap-3 border-r border-white/10 pr-8">
+                  <div className="h-10 flex items-center gap-3 text-brand-400 bg-brand-500/10 px-4 rounded-xl mb-6 shadow-inner">
+                    <div className="w-4 h-4 rounded-md bg-brand-500 shadow-[0_0_12px_rgba(37,99,235,0.6)]"></div>
+                    <span className="text-sm font-bold">Dashboard</span>
+                  </div>
+                  {['Inventory', 'Products', 'Analytics', 'Settings'].map(item => (
+                    <div key={item} className="h-10 flex items-center px-4 text-slate-400 hover:text-slate-200 transition-colors cursor-default">
+                      <span className="text-sm font-medium">{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Main Area Mock */}
+                <div className="md:col-span-3 flex flex-col gap-8">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                    {/* KPI Cards */}
+                    <div className="bg-slate-950/60 rounded-2xl border border-white/5 p-5 relative overflow-hidden shadow-inner">
+                      <div className="absolute right-0 top-0 w-20 h-20 bg-brand-500/10 rounded-bl-full pointer-events-none"></div>
+                      <p className="text-xs text-slate-400 font-medium mb-2 relative z-10">Total Items</p>
+                      <p className="text-3xl font-bold relative z-10 text-white">2,405</p>
+                    </div>
+                    <div className="bg-slate-950/60 rounded-2xl border border-white/5 p-5 relative overflow-hidden shadow-inner">
+                      <div className="absolute right-0 top-0 w-20 h-20 bg-amber-500/10 rounded-bl-full pointer-events-none"></div>
+                      <p className="text-xs text-slate-400 font-medium mb-2 relative z-10">Low Stock</p>
+                      <p className="text-3xl font-bold text-amber-400 relative z-10">12</p>
+                    </div>
+                    <div className="hidden md:block bg-slate-950/60 rounded-2xl border border-white/5 p-5 relative overflow-hidden shadow-inner">
+                      <div className="absolute right-0 top-0 w-20 h-20 bg-emerald-500/10 rounded-bl-full pointer-events-none"></div>
+                      <p className="text-xs text-slate-400 font-medium mb-2 relative z-10">Stock Value</p>
+                      <p className="text-3xl font-bold text-emerald-400 relative z-10">₹45.2L</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="bg-slate-950/60 rounded-2xl border border-white/5 p-6 flex flex-col shadow-inner">
+                      <p className="text-sm text-slate-400 font-medium mb-6">Inventory Health</p>
+                      <div className="flex-1 h-36 opacity-80">
+                        <MockChart />
+                      </div>
+                    </div>
+                    <div className="bg-slate-950/60 rounded-2xl border border-white/5 p-6 shadow-inner">
+                      <p className="text-sm text-slate-400 font-medium mb-6">Critical Items</p>
+                      <div className="space-y-2">
+                        <MockTableRow name="Mechanical Keyboard" sku="SKU-MK-02" stock={3} status="Low Stock" />
+                        <MockTableRow name="Ergo Mouse" sku="SKU-EM-01" stock={0} status="Out of Stock" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Floating Cards (z-index: 30) - Siblings to Dashboard Frame */}
+            
+            {/* Left Floating Card: Stock Value */}
+            <div className="hidden lg:flex absolute -left-10 top-20 z-30 glass-panel-elevated p-4 rounded-xl border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] bg-slate-900/95 backdrop-blur-xl items-center gap-4">
+              <div className="p-3 bg-emerald-500/20 rounded-xl shadow-inner">
                 <TrendingUp className="w-5 h-5 text-emerald-400" />
               </div>
-              <div className="text-left">
-                <p className="text-xs text-slate-400 font-medium">Stock Value</p>
-                <p className="text-lg font-bold">₹15.6L</p>
-              </div>
-            </div>
-          </div>
-
-          <div className="hidden lg:block absolute -right-8 bottom-32 z-20 glass-panel-elevated p-4 rounded-xl animate-float">
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-rose-500/20 rounded-lg">
-                <AlertCircle className="w-5 h-5 text-rose-400" />
-              </div>
-              <div className="text-left">
-                <p className="text-xs text-slate-400 font-medium">Attention Required</p>
-                <p className="text-sm font-bold text-rose-400">3 Items Low Stock</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Main Dashboard Mock */}
-          <div className="glass-panel-elevated rounded-2xl border border-slate-700/50 shadow-2xl overflow-hidden relative">
-            {/* Mock Header */}
-            <div className="h-12 border-b border-slate-700/50 flex items-center px-4 gap-2 bg-slate-900/50">
-              <div className="w-3 h-3 rounded-full bg-rose-500"></div>
-              <div className="w-3 h-3 rounded-full bg-amber-500"></div>
-              <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
-            </div>
-
-            {/* Mock Content */}
-            <div className="p-6 grid grid-cols-1 md:grid-cols-4 gap-6 bg-slate-900">
-              {/* Sidebar Mock */}
-              <div className="hidden md:flex flex-col gap-2 border-r border-slate-800 pr-6">
-                <div className="h-8 flex items-center gap-3 text-brand-400 bg-brand-500/10 px-3 rounded-lg mb-4">
-                  <div className="w-4 h-4 rounded bg-brand-500"></div>
-                  <span className="text-sm font-semibold">Dashboard</span>
-                </div>
-                {['Products', 'Inventory', 'Analytics', 'Settings'].map(item => (
-                  <div key={item} className="h-8 flex items-center px-3 text-slate-400 hover:text-slate-200 transition-colors cursor-default">
-                    <span className="text-sm font-medium">{item}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Main Area Mock */}
-              <div className="md:col-span-3 flex flex-col gap-6">
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {/* KPI Cards */}
-                  <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 p-4 relative overflow-hidden group hover:border-slate-600 transition-colors">
-                    <div className="absolute right-0 top-0 w-16 h-16 bg-brand-500/10 rounded-bl-full"></div>
-                    <p className="text-xs text-slate-400 font-medium mb-1 relative z-10">Total Items</p>
-                    <p className="text-2xl font-bold relative z-10">2,405</p>
-                  </div>
-                  <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 p-4 relative overflow-hidden group hover:border-slate-600 transition-colors">
-                    <div className="absolute right-0 top-0 w-16 h-16 bg-amber-500/10 rounded-bl-full"></div>
-                    <p className="text-xs text-slate-400 font-medium mb-1 relative z-10">Low Stock</p>
-                    <p className="text-2xl font-bold text-amber-400 relative z-10">12</p>
-                  </div>
-                  <div className="hidden md:block bg-slate-800/50 rounded-xl border border-slate-700/50 p-4 relative overflow-hidden group hover:border-slate-600 transition-colors">
-                    <div className="absolute right-0 top-0 w-16 h-16 bg-emerald-500/10 rounded-bl-full"></div>
-                    <p className="text-xs text-slate-400 font-medium mb-1 relative z-10">Stock Value</p>
-                    <p className="text-2xl font-bold text-emerald-400 relative z-10">₹45.2L</p>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 p-4 flex flex-col">
-                    <p className="text-xs text-slate-400 font-medium mb-4">Inventory Health</p>
-                    <div className="flex-1 h-32 opacity-70">
-                      <MockChart />
-                    </div>
-                  </div>
-                  <div className="bg-slate-800/50 rounded-xl border border-slate-700/50 p-4">
-                    <p className="text-xs text-slate-400 font-medium mb-4">Critical Items</p>
-                    <div className="space-y-1">
-                      <MockTableRow name="Mechanical Keyboard" sku="SKU-MK-02" stock={3} status="Low Stock" />
-                      <MockTableRow name="Ergo Mouse" sku="SKU-EM-01" stock={0} status="Out of Stock" />
-                    </div>
-                  </div>
-                </div>
+              <div className="text-left pr-4">
+                <p className="text-[11px] text-slate-400 font-medium uppercase tracking-wider mb-1">Stock Value</p>
+                <p className="text-xl font-bold text-white leading-none">₹45.2L</p>
               </div>
             </div>
 
-            {/* Shine overlay */}
-            <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-50 pointer-events-none"></div>
+            {/* Right Floating Card: Action Needed */}
+            <div className="hidden lg:flex absolute -right-10 bottom-24 z-30 glass-panel-elevated p-4 rounded-xl border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.5)] bg-slate-900/95 backdrop-blur-xl items-center gap-4">
+              <div className="p-3 bg-amber-500/20 rounded-xl shadow-inner">
+                <AlertCircle className="w-5 h-5 text-amber-400" />
+              </div>
+              <div className="text-left pr-4">
+                <p className="text-[11px] text-slate-400 font-medium uppercase tracking-wider mb-1">Action Needed</p>
+                <p className="text-xl font-bold text-amber-400 leading-none">12 Low Stock</p>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>

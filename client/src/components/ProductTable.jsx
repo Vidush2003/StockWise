@@ -18,7 +18,7 @@ const ProductRow = ({ product, isAdmin, onView, onEdit, onDelete, onStockIn, onS
   }, []);
 
   return (
-    <tr className="hover:bg-slate-800/40 transition-colors group">
+    <tr className="hover:bg-white/5 transition-colors group">
       {/* Product Name */}
       <td className="py-4 px-5">
         <div className="font-semibold text-white group-hover:text-blue-400 transition-colors">
@@ -67,7 +67,7 @@ const ProductRow = ({ product, isAdmin, onView, onEdit, onDelete, onStockIn, onS
           </button>
 
           {menuOpen && (
-            <div className="absolute right-8 top-8 w-48 bg-slate-800 border border-slate-700 rounded-xl shadow-xl z-50 py-1 overflow-hidden">
+            <div className="absolute right-8 top-8 w-48 glass-panel-elevated border border-white/10 rounded-2xl shadow-2xl z-50 py-2 overflow-hidden backdrop-blur-3xl">
               <button
                 onClick={() => { setMenuOpen(false); onView(product._id); }}
                 className="w-full text-left px-4 py-2 text-sm text-slate-300 hover:bg-slate-700 hover:text-white flex items-center gap-2"
@@ -122,11 +122,11 @@ const ProductTable = ({
   onStockOut
 }) => {
   return (
-    <div className="w-full rounded-xl border border-slate-800 bg-slate-900 overflow-visible">
+    <div className="w-full rounded-3xl border border-white/5 bg-slate-900/40 backdrop-blur-xl shadow-2xl overflow-visible">
       <div className="w-full overflow-x-auto overflow-y-visible">
         <table className="w-full text-left border-collapse text-sm">
           <thead>
-            <tr className="border-b border-slate-800 bg-slate-950/60 text-slate-400 font-semibold uppercase text-[11px] tracking-wider">
+            <tr className="border-b border-white/10 bg-slate-950/40 text-slate-400 font-bold uppercase text-[10px] tracking-widest">
               <th className="py-4 px-5">Product</th>
               <th className="py-4 px-4">SKU</th>
               <th className="py-4 px-4">Category</th>
@@ -136,7 +136,7 @@ const ProductTable = ({
               <th className="py-4 px-5 text-right">Actions</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-slate-800/60 text-slate-300">
+          <tbody className="divide-y divide-white/5 text-slate-300">
             {products.map((product) => (
               <ProductRow
                 key={product._id}
