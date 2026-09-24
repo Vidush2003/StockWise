@@ -31,7 +31,6 @@ app.use('/api/products', require('./routes/productRoutes'));
 app.use('/api/transactions', require('./routes/transactionRoutes'));
 app.use('/api/dashboard', require('./routes/dashboardRoutes'));
 app.use('/api/ai', require('./routes/aiRoutes'));
-app.use('/api/seed', require('./routes/seedRoutes'));
 
 // Error handling
 app.use(notFound);
