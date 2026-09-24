@@ -10,6 +10,17 @@ const API = axios.create({
 // Request Interceptor: Attach Bearer token from localStorage
 API.interceptors.request.use(
   (config) => {
+    // Axios URL resolution strips paths from the baseURL if the request URL starts with a slash.
+    // To prevent it from stripping '/api', we remove the leading slash.
+    if (config.url && config.url.startsWith('/')) {
+      config.url = config.url.substring(1);
+    }
+    
+    // Ensure baseURL ends with a trailing slash so the relative path appends correctly
+    if (config.baseURL && !config.baseURL.endsWith('/')) {
+      config.baseURL += '/';
+    }
+
     const token = localStorage.getItem('stockwise_token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
